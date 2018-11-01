@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/main_fragment">
+
+    <fragment
+        android:id="@+id/main_fragment"
+        android:name="mvvm.demo.shoppingcart.view.product_list.view.ProductList"
+        android:label="@string/app_name">
+        <action
+            android:id="@+id/nav_product_list"
+            app:destination="@id/prod_details_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/prod_details_fragment"
+        android:name="mvvm.demo.shoppingcart.view.product_details.view.ProductDetails"
+        android:label="ProductDetails">
+        <argument
+            android:name="prod_details"
+
+            app:argType="mvvm.demo.shoppingcart.view.product_list.model.Product" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/cart_fragment"
+        android:name="mvvm.demo.shoppingcart.view.cart.CartView"
+        android:label="CartView"/>
+
+
+    <navigation
+        android:id="@+id/login_flow"
+        app:startDestination="@id/guest_fragment">
+
+        <fragment
+            android:id="@+id/guest_fragment"
+            android:name="mvvm.demo.shoppingcart.view.profile.GuestView"
+            android:label="Guest">
+            <action
+                android:id="@+id/nv_login_view"
+                app:destination="@id/login_fragment" />
+            <action
+                android:id="@+id/nav_signup"
+                app:destination="@id/create_account_fragment"/>
+        </fragment>
+
+        <fragment
+            android:id="@+id/login_fragment"
+            android:name="mvvm.demo.shoppingcart.view.profile.LoginView"
+            android:label="Login">
+            <action
+                android:id="@+id/nav_profile"
+                app:destination="@id/profile_fragment" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/create_account_fragment"
+            android:name="mvvm.demo.shoppingcart.view.profile.Signup"
+            android:label="Create Account">
+            <action
+                android:id="@+id/nav_profile1"
+                app:destination="@id/profile_fragment" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/profile_fragment"
+            android:name="mvvm.demo.shoppingcart.view.profile.Profile"
+            android:label="Profile" />
+
+
+    </navigation>
+
+    <fragment
+        android:id="@+id/promo_fragment"
+        android:name="mvvm.demo.shoppingcart.view.promo.PromoView">
+
+    </fragment>
+
+</navigation>
