@@ -7,7 +7,7 @@ import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import mvvm.demo.shoppingcart.view.product_list.model.Product
 import mvvm.demo.shoppingcart.view.product_list.service.ProductRepository
-import rx.Subscriber
+
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 

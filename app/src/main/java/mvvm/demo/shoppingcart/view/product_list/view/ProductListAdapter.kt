@@ -3,6 +3,8 @@ package mvvm.demo.shoppingcart.view.product_list.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.PrecomputedTextCompat
+import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.list_product_row.view.*
 import mvvm.demo.shoppingcart.R
@@ -43,7 +45,7 @@ class ProductListAdapter(val productListener: ProductListener): RecyclerView.Ada
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product= this.products.get(position)
-        holder.title.text=product.title
+        holder.title.setTextFuture(PrecomputedTextCompat.getTextFuture(product.title,TextViewCompat.getTextMetricsParams(holder.title),null))
         holder.itemView.setTag(position)
 
     }

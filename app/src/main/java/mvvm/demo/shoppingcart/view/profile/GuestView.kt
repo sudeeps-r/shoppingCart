@@ -1,9 +1,12 @@
 package mvvm.demo.shoppingcart.view.profile
 
 import android.os.Bundle
+import android.text.Spannable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.PrecomputedTextCompat
+import androidx.core.widget.TextViewCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -20,17 +23,16 @@ import javax.inject.Inject
  * Company <Reliance Payment Solutions Ltd.>
  * Email <sudeep.sr@ril.com>
  */
-class GuestView :  BaseView(),Injectable {
+class GuestView : BaseView(), Injectable {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    lateinit var guestViewModel:GuestViewModel
-
+    lateinit var guestViewModel: GuestViewModel
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        this.guestViewModel=ViewModelProviders.of(this,this.viewModelFactory).get(GuestViewModel::class.java)
+        this.guestViewModel = ViewModelProviders.of(this, this.viewModelFactory).get(GuestViewModel::class.java)
         loginBtn.setOnClickListener {
             findNavController().navigate(GuestViewDirections.nvLoginView())
         }
@@ -39,7 +41,16 @@ class GuestView :  BaseView(),Injectable {
             findNavController().navigate(GuestViewDirections.navSignup())
         }
     }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.guest,container,false)
+        return inflater.inflate(R.layout.guest, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val params: PrecomputedTextCompat.Params = TextViewCompat.getTextMetricsParams(tvExample)
+        val precomputedText: PrecomputedTextCompat = PrecomputedTextCompat.create("Welcome to mycart", params)
+        TextViewCompat.setPrecomputedText(tvExample, precomputedText)
     }
 }

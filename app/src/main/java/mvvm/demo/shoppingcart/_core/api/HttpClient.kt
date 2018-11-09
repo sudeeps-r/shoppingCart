@@ -9,7 +9,7 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import mvvm.demo.shoppingcart._core.di.scope.AppScope
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+
 import javax.inject.Singleton
 
 
